@@ -1,0 +1,4 @@
+{
+  "MONGO_URI": "mongodb://localhost:27017/react_social_network",
+  "JWT_KEY": "react-social-network@jwt-key"
+}
