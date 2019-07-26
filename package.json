@@ -4,10 +4,12 @@
   "description": "sample social network app with react & node",
   "main": "server.js",
   "scripts": {
+    "client": "npm start --prefix client",
     "start": "node -r esm server.js",
     "server": "nodemon -r esm server.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
     "react-social-network"

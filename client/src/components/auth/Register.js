@@ -1,14 +1,20 @@
 import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const Register = () => {
+import { registerUser } from '../../actions/authAction.js';
+
+const Register = ({ isAuthenticated, registerUser, history }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     cPassword: ''
   });
+
+  const { name, email, password, cPassword } = formData;
 
   const onHandleChange = e =>
     setFormData({
@@ -18,8 +24,16 @@ const Register = () => {
 
   const onHandleSubmit = e => {
     e.preventDefault();
-    console.log(formData);
+    const payload = {
+      name,
+      email,
+      password,
+      cPassword
+    };
+    registerUser(payload);
   };
+
+  if (isAuthenticated) history.push('/dashboard');
 
   return (
     <Fragment>
@@ -96,11 +110,23 @@ const Register = () => {
           Sign Up
         </Button>
         <p className="text-center mt-5">
-          If you already have an account, Let's <Link to="/login">Sign In</Link>
+          If you already have an account, Let's <Link to="/sign-in">Sign In</Link>
         </p>
       </Form>
     </Fragment>
   );
 };
 
-export default Register;
+Register.propTypes = {
+  isAuthenticated: PropTypes.bool,
+  registerUser: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(Register);

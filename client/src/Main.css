@@ -20,7 +20,7 @@ body {
 }
 
 /* Forms */
-#form-login, #form-register {
+#form-login, #form-register, .alert-container {
   width: 60%;
   margin: auto;
 }
