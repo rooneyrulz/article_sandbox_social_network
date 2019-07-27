@@ -9,6 +9,9 @@ import Register from '../auth/Register';
 import Dashboard from '../dashboard/Dashboard';
 import Alert from '../layouts/Alert';
 
+// PRIVATE ROUTE
+import PrivateRoute from '../routing/PrivateRoute';
+
 const Routes = () => (
   <Container>
     <div className="alert-container">
@@ -19,7 +22,7 @@ const Routes = () => (
       <Route exact path="/home" component={Landing} />
       <Route exact path="/sign-up" component={Register} />
       <Route exact path="/sign-in" component={Login} />
-      <Route exact path="/dashboard" component={Dashboard} />
+      <PrivateRoute exact path="/dashboard" component={Dashboard} />
     </Switch>
   </Container>
 );

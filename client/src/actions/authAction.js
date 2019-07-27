@@ -8,7 +8,8 @@ import {
   REGISTER_FAIL,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  AUTH_ERROR
+  AUTH_ERROR,
+  LOGOUT
 } from './types';
 
 const uri = 'http://localhost:5000';
@@ -115,4 +116,9 @@ export const loginUser = (email, password) => async dispatch => {
       dispatch(setAlert(error.response.data, error.response.status, 'danger'));
     }
   }
+};
+
+// LOGOUT USER
+export const logoutUser = () => dispatch => {
+  dispatch({ type: LOGOUT });
 };

@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   Navbar,
   NavbarBrand,
   NavbarToggler,
   Nav,
-  NavItem,
   Container,
   Collapse
 } from 'reactstrap';
 
-const AppHeader = () => {
+import NavLinks from './NavLinks';
+import { logoutUser } from '../../actions/authAction';
+
+const AppHeader = ({ isAuthenticated, logoutUser }) => {
   const [state, setState] = useState({ isOpen: false });
 
   const toggle = () => setState({ ...state, isOpen: !state.isOpen });
@@ -22,26 +25,10 @@ const AppHeader = () => {
         <NavbarToggler onClick={() => toggle()} />
         <Collapse navbar isOpen={state.isOpen}>
           <Nav navbar className="ml-auto">
-            <NavItem>
-              <NavLink exact to="/home" className="nav-link">
-                HOME
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink exact to="/dashboard" className="nav-link">
-                DASHBOARD
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink exact to="/sign-up" className="nav-link">
-                SIGN UP
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink exact to="/sign-in" className="nav-link">
-                SIGN IN
-              </NavLink>
-            </NavItem>
+            <NavLinks
+              isAuthenticated={isAuthenticated}
+              logoutUser={logoutUser}
+            />
           </Nav>
         </Collapse>
       </Container>
@@ -49,4 +36,16 @@ const AppHeader = () => {
   );
 };
 
-export default AppHeader;
+AppHeader.propTypes = {
+  isAuthenticated: PropTypes.bool,
+  logoutUser: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(AppHeader);
