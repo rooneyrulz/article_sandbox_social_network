@@ -11,6 +11,11 @@ const NavLinks = ({ isAuthenticated, logoutUser }) => {
         </NavLink>
       </NavItem>
       <NavItem>
+        <NavLink exact to="/articles" className="nav-link">
+          ARTICLES
+        </NavLink>
+      </NavItem>
+      <NavItem>
         <NavLink onClick={() => logoutUser()} to="#!" className="nav-link">
           SIGN OUT
         </NavLink>

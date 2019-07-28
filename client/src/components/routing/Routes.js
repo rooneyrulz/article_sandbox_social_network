@@ -7,6 +7,7 @@ import Landing from '../layouts/Landing';
 import Login from '../auth/Login';
 import Register from '../auth/Register';
 import Dashboard from '../dashboard/Dashboard';
+import Articles from '../articles/Articles';
 import Alert from '../layouts/Alert';
 
 // PRIVATE ROUTE
@@ -23,6 +24,7 @@ const Routes = () => (
       <Route exact path="/sign-up" component={Register} />
       <Route exact path="/sign-in" component={Login} />
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
+      <PrivateRoute exact path="/articles" component={Articles} />
     </Switch>
   </Container>
 );
