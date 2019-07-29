@@ -17,9 +17,7 @@ export const getArticles = async (req, res, next) => {
     if (articles.length < 1)
       return res.status(409).send('No Articles Added Yet!');
 
-    return res.status(200).json({
-      articles,
-    });
+    return res.status(200).json(articles);
   } catch (error) {
     console.log(error.message);
     return res.status(500).send('Server Error!');
@@ -51,9 +49,7 @@ export const createArticle = async (req, res, next) => {
     });
 
     const article = await newArticle.save();
-    return res.status(201).json({
-      article,
-    });
+    return res.status(201).json(article);
   } catch (error) {
     console.log(error.message);
     return res.status(500).send('Server Error!');
@@ -71,9 +67,7 @@ export const getArticle = async (req, res, next) => {
 
     if (!article) return res.status(409).send('No Article Found!');
 
-    return res.status(200).json({
-      article,
-    });
+    return res.status(200).json(article);
   } catch (error) {
     console.log(error.message);
     return res.status(500).send('Server Error!');

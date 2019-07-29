@@ -13,7 +13,7 @@ const initialState = {
   articles: [],
   article: null,
   loading: true,
-  error: {}
+  error: []
 };
 
 export default (state = initialState, action) => {
@@ -51,7 +51,7 @@ export default (state = initialState, action) => {
     case ARTICLE_ERROR:
       return {
         ...state,
-        error: payload,
+        error: [payload, ...state.error],
         loading: false
       };
 

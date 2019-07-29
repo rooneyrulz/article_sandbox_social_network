@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const ArticleForm = () => {
+import { addArticle } from '../../actions/articleAction';
+
+const ArticleForm = ({ addArticle }) => {
   const [formData, setFormData] = useState({ name: '', description: '' });
 
   const onHandleChange = e =>
@@ -9,7 +13,7 @@ const ArticleForm = () => {
 
   const onHandleSubmit = e => {
     e.preventDefault();
-    console.log(formData);
+    addArticle(formData);
   };
 
   return (
@@ -43,4 +47,12 @@ const ArticleForm = () => {
   );
 };
 
-export default ArticleForm;
+ArticleForm.propTypes = {
+  addArticle: PropTypes.func.isRequired
+};
+
+
+export default connect(
+  null,
+  { addArticle }
+)(ArticleForm);

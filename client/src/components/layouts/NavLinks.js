@@ -11,11 +11,6 @@ const NavLinks = ({ isAuthenticated, logoutUser }) => {
         </NavLink>
       </NavItem>
       <NavItem>
-        <NavLink exact to="/articles" className="nav-link">
-          ARTICLES
-        </NavLink>
-      </NavItem>
-      <NavItem>
         <NavLink onClick={() => logoutUser()} to="#!" className="nav-link">
           SIGN OUT
         </NavLink>
@@ -26,7 +21,7 @@ const NavLinks = ({ isAuthenticated, logoutUser }) => {
   const guestLinks = (
     <Fragment>
       <NavItem>
-        <NavLink exact to="/home" className="nav-link">
+        <NavLink exact to="/landing" className="nav-link">
           HOME
         </NavLink>
       </NavItem>
@@ -43,7 +38,22 @@ const NavLinks = ({ isAuthenticated, logoutUser }) => {
     </Fragment>
   );
 
-  return <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>;
+  const commonLinks = (
+    <Fragment>
+      <NavItem>
+        <NavLink exact to="/articles" className="nav-link">
+          ARTICLES
+        </NavLink>
+      </NavItem>
+    </Fragment>
+  );
+
+  return (
+    <Fragment>
+      <Fragment>{commonLinks}</Fragment>
+      {isAuthenticated ? authLinks : guestLinks}
+    </Fragment>
+  );
 };
 
 export default NavLinks;

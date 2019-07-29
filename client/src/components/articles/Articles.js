@@ -7,26 +7,36 @@ import ArticleItem from './ArticleItem';
 
 import { getArticles } from '../../actions/articleAction';
 
-const Articles = ({ articles: { articles }, getArticles }) => {
-  useEffect(() => getArticles(), [getArticles]);
+const Articles = ({
+  auth: { isAuthenticated },
+  arts: { articles },
+  getArticles
+}) => {
+  useEffect(() => {
+    async function init() {
+      await getArticles();
+    }
+    init();
+  }, [getArticles]);
 
   return (
     <div id="Articles">
-      <ArticleForm />
-      {articles.map(art => (
-        <ArticleItem key={art._id} article={art} />
-      ))}
+      {isAuthenticated && <ArticleForm />}
+      {articles.length > 0 &&
+        articles.map(art => <ArticleItem key={art._id} article={art} />)}
     </div>
   );
 };
 
 Articles.propTypes = {
-  articles: PropTypes.object.isRequired,
+  arts: PropTypes.object,
+  auth: PropTypes.object.isRequired,
   getArticles: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  articles: state.article
+  arts: state.article,
+  auth: state.auth
 });
 
 export default connect(

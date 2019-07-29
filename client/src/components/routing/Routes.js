@@ -19,12 +19,12 @@ const Routes = () => (
       <Alert />
     </div>
     <Switch>
-      <Redirect exact from="/" to="/home" />
-      <Route exact path="/home" component={Landing} />
+      <Redirect exact from="/" to="/landing" />
+      <Route exact path="/landing" component={Landing} />
       <Route exact path="/sign-up" component={Register} />
       <Route exact path="/sign-in" component={Login} />
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
-      <PrivateRoute exact path="/articles" component={Articles} />
+      <Route exact path="/articles" component={Articles} />
     </Switch>
   </Container>
 );
