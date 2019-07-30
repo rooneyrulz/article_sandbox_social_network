@@ -29,12 +29,12 @@ const Articles = ({
   ) : (
     <div id="Articles">
       <div className="Article-Form">
-        {isAuthenticated && (
+        { isAuthenticated && (
           <Fragment>
-            <Button color="info" onClick={() => toggle()}>
+            <Button className="article-form-toggler btn-lg" color="info" onClick={() => toggle()}>
               Toggle Add Article
             </Button>
-            <Collapse isOpen={state}>
+            <Collapse className="article-form-collapse" isOpen={state}>
               <ArticleForm />
             </Collapse>
           </Fragment>

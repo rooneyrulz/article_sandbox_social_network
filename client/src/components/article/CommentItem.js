@@ -13,18 +13,24 @@ const CommentItem = ({
   artLoading,
   deleteComment
 }) => {
-  return artLoading ? <h1>Loading</h1> : (
+  return artLoading ? (
+    <h1>Loading</h1>
+  ) : (
     <div className="Comment-Item">
-      <p>{name}</p>
-      <p>{text}</p>
-      <p>
-        <Moment format='DD/MM/YYYY'>{date}</Moment>
-      </p>
       {!auth.loading && auth.user._id === user && (
-        <Button color="danger" onClick={() => deleteComment(articleId, _id)}>
+        <Button
+          className="Comment-Delete"
+          color="danger"
+          onClick={() => deleteComment(articleId, _id)}
+        >
           Remove
         </Button>
       )}
+      <p>{name}</p>
+      <p>{text}</p>
+      <p>
+        <Moment format="DD/MM/YYYY">{date}</Moment>
+      </p>
     </div>
   );
 };

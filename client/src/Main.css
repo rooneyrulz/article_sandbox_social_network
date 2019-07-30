@@ -24,3 +24,90 @@ body {
   width: 60%;
   margin: auto;
 }
+
+/* Articles */
+
+#Articles .Article-Form {
+
+}
+
+#Articles .article-form-toggler {
+  margin-bottom: 2rem;
+}
+
+#Articles .article-form-collapse {
+  margin-bottom: 2rem;
+}
+
+#Articles .Article-Item {
+  border-radius: 0 !important;
+}
+
+#Articles .Article-Item .card-header {
+  background: rgb(50, 91, 124);
+  color: #f4f4f4;
+  text-transform: capitalize;
+}
+
+#Articles .Article-Item .card-text {
+  text-align: center;
+}
+
+#Articles .Article-Item .like {
+  margin: 0 1em;
+  text-decoration: none;
+}
+
+#Articles .Article-Item .explore {
+  text-align: right;
+  text-decoration: none;
+  margin: 0 1em 1em;
+  border: none;
+  border-radius: 0;
+  outline: none;
+}
+
+/* Article */
+
+#Article .article {
+  width: 100%;
+  background: rgb(63, 93, 122);
+  padding: 4rem;
+  color: #f4f4f4;
+  border: 1px #111 solid;
+  text-transform: capitalize;
+}
+
+#Article .article-title, .article-desc, .article-date {
+  
+}
+
+#Article .article-comment {}
+
+#Article .comment-form-toggler {
+  margin-bottom: 1rem;
+  float: right;
+}
+
+#Article .comment-collapse {
+  margin: 1rem auto;
+}
+
+#Article .Comment-Items {
+  margin-top: 1rem auto;
+}
+
+#Article .Comment-Item {
+  background: #f4f4f4;
+  color: #111;
+  border-radius: 1rem;
+  border: 1px #111 solid;
+  margin: 1rem auto;
+  padding: 3rem;
+}
+
+#Article .Comment-Delete {
+  float: right;
+  margin: 1rem 1rem 2rem;
+  border-radius: 5rem;
+}

@@ -25,6 +25,7 @@ const ArticleForm = ({ addArticle }) => {
           name="title"
           id="title"
           placeholder="Enter title"
+          className="form-control form-control-lg"
           onChange={e => onHandleChange(e)}
         />
       </FormGroup>
@@ -35,10 +36,11 @@ const ArticleForm = ({ addArticle }) => {
           name="description"
           id="description"
           placeholder="Enter description"
+          className="form-control form-control-lg"
           onChange={e => onHandleChange(e)}
         />
       </FormGroup>
-      <Button type="submit" color="success">
+      <Button type="submit" color="success" className="btn-lg">
         CREATE
       </Button>
     </Form>

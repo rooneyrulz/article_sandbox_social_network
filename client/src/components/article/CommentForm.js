@@ -25,10 +25,11 @@ const CommentForm = ({ articleId, addComment }) => {
           name="text"
           id="comment"
           placeholder="Type comment"
+          className="form-control form-control-lg"
           onChange={e => onHandleChange(e)}
         />
       </FormGroup>
-      <Button type="submit" color="primary">
+      <Button className="btn-lg" type="submit" color="primary">
         Comment
       </Button>
     </Form>
