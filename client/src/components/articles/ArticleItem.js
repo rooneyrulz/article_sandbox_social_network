@@ -1,40 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Card, CardHeader, CardTitle, CardFooter } from 'reactstrap';
+import { Card, CardHeader, CardTitle, CardText } from 'reactstrap';
 
 import { likeArticle, unLikeArticle } from '../../actions/articleAction';
 
 const ArticleItem = ({ article, likeArticle, unLikeArticle }) => {
-  const [state, setState] = useState({ isOpen: false });
-
-  const toggle = () => setState({ ...state, isOpen: !state.isOpen });
-
   return (
     <Card style={{ position: 'relative' }} className="Article-Item mb-3">
       <CardHeader>
-        <span
-          style={{
-            position: 'absolute',
-            top: '1px',
-            right: '5px',
-            cursor: 'pointer'
-          }}
-          className="btn"
-          onClick={() => toggle()}
-        >
-          {'>'}
-        </span>
         <CardTitle>{article.title}</CardTitle>
       </CardHeader>
-      <CardFooter>
+      <CardText>
         <a onClick={() => likeArticle(article._id)} href="#!">
           Like
         </a>
         <a onClick={() => unLikeArticle(article._id)} href="#!">
           Unlike
         </a>
-      </CardFooter>
+      </CardText>
+      <Link to={`/article/${article._id}`}>Explore</Link>
     </Card>
   );
 };

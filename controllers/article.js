@@ -58,7 +58,7 @@ export const createArticle = async (req, res, next) => {
 
 //  @ROUTE    >    GET   /api/article/:id
 //  @DESC     >    GET ARTICLE
-//  @ACCESS   >    PRIVATE
+//  @ACCESS   >    PUBLIC
 export const getArticle = async (req, res, next) => {
   const { id } = req.params;
 

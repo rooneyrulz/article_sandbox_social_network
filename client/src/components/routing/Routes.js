@@ -8,6 +8,7 @@ import Login from '../auth/Login';
 import Register from '../auth/Register';
 import Dashboard from '../dashboard/Dashboard';
 import Articles from '../articles/Articles';
+import Article from '../article/Article';
 import Alert from '../layouts/Alert';
 
 // PRIVATE ROUTE
@@ -25,6 +26,7 @@ const Routes = () => (
       <Route exact path="/sign-in" component={Login} />
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <Route exact path="/articles" component={Articles} />
+      <Route exact path="/article/:id" component={Article} />
     </Switch>
   </Container>
 );

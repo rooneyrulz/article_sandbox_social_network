@@ -10,6 +10,7 @@ import {
   unlikeArticle,
   commentOnArticle,
   deleteComment,
+  getArticle,
 } from '../../controllers/article';
 
 // IMPORT AUTH MIDDLEWARE
@@ -40,9 +41,9 @@ router.post(
 );
 
 //  @ROUTE    >    POST   /api/article/:id
-//  @DESC     >    DELETE ARTICLE
-//  @ACCESS   >    PRIVATE
-router.get('/:id', isAuth, deleteArticle);
+//  @DESC     >    GET ARTICLE
+//  @ACCESS   >    PUBLIC
+router.get('/:id', getArticle);
 
 //  @ROUTE    >    PUT   /api/article/like/:id
 //  @DESC     >    LIKE ARTICLE
