@@ -266,7 +266,7 @@ export const addComment = (formData, id) => async dispatch => {
 };
 
 // DELETE COMMENT
-export const deletedComment = (artId, comntId) => async dispatch => {
+export const deleteComment = (artId, comntId) => async dispatch => {
   // DEFINE HEADER
   const config = {
     header: {

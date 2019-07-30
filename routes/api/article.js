@@ -69,7 +69,7 @@ router.post(
   commentOnArticle
 );
 
-//  @ROUTE    >    DELETE   /api/article/comment/:id
+//  @ROUTE    >    DELETE   /api/article/:id/:commentId
 //  @DESC     >    DELETE COMMENT ON ARTICLE
 //  @ACCESS   >    PRIVATE
 router.delete('/comment/:id/:commentId', isAuth, deleteComment);
