@@ -10,15 +10,23 @@ import {
   Button
 } from 'reactstrap';
 
-import { likeArticle, unLikeArticle } from '../../actions/articleAction';
+import {
+  likeArticle,
+  unLikeArticle,
+  deleteArticle
+} from '../../actions/articleAction';
 
 const ArticleItem = ({
   article: { _id, name, title, user, likes, comments, date },
+  auth,
   likeArticle,
   unLikeArticle,
+  deleteArticle,
   history
 }) => {
   const goToArticleItem = () => history.push(`/article/${_id}`);
+
+  const onHandleDelete = () => deleteArticle(_id);
 
   return (
     <Card style={{ position: 'relative' }} className="Article-Item my-5">
@@ -47,7 +55,20 @@ const ArticleItem = ({
         </CardText>
       </CardBody>
       <CardFooter>
-        <Button color="dark" className="explore btn" onClick={() => goToArticleItem()}>
+        {auth.isAuthenticated && auth.user._id === user && (
+          <Button
+            color="danger"
+            className="delete border-0 btn mr-3"
+            onClick={() => onHandleDelete()}
+          >
+            <i className="fas fa-times"></i>
+          </Button>
+        )}
+        <Button
+          color="dark"
+          className="explore btn"
+          onClick={() => goToArticleItem()}
+        >
           Explore{' '}
           <span className="comment-count">
             {comments.length > 0 && <span>{comments.length}</span>}
@@ -60,11 +81,17 @@ const ArticleItem = ({
 
 ArticleItem.propTypes = {
   article: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  deleteArticle: PropTypes.func.isRequired,
   likeArticle: PropTypes.func,
   unlikeArticle: PropTypes.func
 };
 
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
 export default connect(
-  null,
-  { likeArticle, unLikeArticle }
+  mapStateToProps,
+  { likeArticle, unLikeArticle, deleteArticle }
 )(ArticleItem);

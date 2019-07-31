@@ -45,6 +45,11 @@ router.post(
 //  @ACCESS   >    PUBLIC
 router.get('/:id', getArticle);
 
+//  @ROUTE    >    DELETE   /api/article/:id
+//  @DESC     >    DELETE ARTICLE
+//  @ACCESS   >    PRIVATE
+router.delete('/:id', isAuth, deleteArticle);
+
 //  @ROUTE    >    PUT   /api/article/like/:id
 //  @DESC     >    LIKE ARTICLE
 //  @ACCESS   >    PRIVATE
