@@ -21,7 +21,7 @@ const AppHeader = ({ isAuthenticated, logoutUser }) => {
   return (
     <Navbar light expand="md" className="py-3">
       <Container>
-        <NavbarBrand href="/home">Article Sandbox</NavbarBrand>
+        <NavbarBrand href="/landing">Article Sandbox</NavbarBrand>
         <NavbarToggler onClick={() => toggle()} />
         <Collapse navbar isOpen={state.isOpen}>
           <Nav navbar className="ml-auto">

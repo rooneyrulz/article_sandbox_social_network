@@ -19,7 +19,7 @@ export const authenticateUser = async (req, res, next) => {
   try {
     const user = await User.findOne({ email }).exec();
 
-    if (!user) return res.status(409).send('User Not Found!');
+    if (!user) return res.status(409).send('User not found!');
 
     const isMatch = await compare(password, user.password);
 

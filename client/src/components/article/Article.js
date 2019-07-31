@@ -6,6 +6,7 @@ import Moment from 'react-moment';
 
 import CommentForm from './CommentForm';
 import CommentItem from './CommentItem';
+import Spinner from '../layouts/Spinner';
 
 import { getArticle } from '../../actions/articleAction';
 
@@ -13,7 +14,8 @@ const Article = ({
   article: { article, loading },
   auth: { isAuthenticated },
   getArticle,
-  match
+  match,
+  history
 }) => {
   const [state, setState] = useState(false);
 
@@ -27,7 +29,7 @@ const Article = ({
   const toggle = () => setState(!state);
 
   return loading || article === null ? (
-    <h1>Loading</h1>
+    <Spinner />
   ) : (
     <div id="Article">
       <div className="article">
@@ -38,15 +40,15 @@ const Article = ({
           {isAuthenticated && (
             <Fragment>
               <Button
-                className="comment-form-toggler btn-lg"
+                className="comment-form-toggler btn-lg m-4"
                 color="dark"
                 onClick={() => toggle()}
               >
                 Toggle Comment
               </Button>
               <Collapse className="comment-collapse" isOpen={state}>
-                <div className="Comment-Form">
-                  <CommentForm articleId={article._id} />
+                <div className="Comment-Form m-4">
+                  <CommentForm history={history} articleId={article._id} />
                 </div>
                 <div className="Comment-Items">
                   {article.comments.length > 0 &&

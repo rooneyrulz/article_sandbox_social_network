@@ -9,14 +9,13 @@ body {
   font-weight: 400;
   font-size: 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f8f9fa;
   overflow-x: hidden;
 }
 
 /* Header */
 
 .navbar {
-  background: #fff;
+  background: #f8f9fa;
 }
 
 /* Forms */
@@ -58,13 +57,15 @@ body {
   text-decoration: none;
 }
 
+#Articles .Article-Item .card-footer {
+  background: rgb(50, 91, 124);
+}
+
 #Articles .Article-Item .explore {
-  text-align: right;
-  text-decoration: none;
-  margin: 0 1em 1em;
   border: none;
   border-radius: 0;
   outline: none;
+
 }
 
 /* Article */
@@ -83,15 +84,6 @@ body {
 }
 
 #Article .article-comment {}
-
-#Article .comment-form-toggler {
-  margin-bottom: 1rem;
-  float: right;
-}
-
-#Article .comment-collapse {
-  margin: 1rem auto;
-}
 
 #Article .Comment-Items {
   margin-top: 1rem auto;

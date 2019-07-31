@@ -5,13 +5,15 @@ import { Collapse, Button } from 'reactstrap';
 
 import ArticleForm from './ArticleForm';
 import ArticleItem from './ArticleItem';
+import Spinner from '../layouts/Spinner';
 
 import { getArticles } from '../../actions/articleAction';
 
 const Articles = ({
   auth: { isAuthenticated },
   arts: { articles, loading },
-  getArticles
+  getArticles,
+  history
 }) => {
   const [state, setState] = useState(false);
 
@@ -25,24 +27,28 @@ const Articles = ({
   }, [getArticles]);
 
   return loading || articles.length < 0 ? (
-    <h1>Loading</h1>
+    <Spinner />
   ) : (
     <div id="Articles">
       <div className="Article-Form">
-        { isAuthenticated && (
+        {isAuthenticated && (
           <Fragment>
-            <Button className="article-form-toggler btn-lg" color="info" onClick={() => toggle()}>
+            <Button
+              className="article-form-toggler btn-lg"
+              color="info"
+              onClick={() => toggle()}
+            >
               Toggle Add Article
             </Button>
             <Collapse className="article-form-collapse" isOpen={state}>
-              <ArticleForm />
+              <ArticleForm toggle={toggle} />
             </Collapse>
           </Fragment>
         )}
       </div>
       <div className="Article-Items">
         {articles.length > 0 &&
-          articles.map(art => <ArticleItem key={art._id} article={art} />)}
+          articles.map(art => <ArticleItem history={history} key={art._id} article={art} />)}
       </div>
     </div>
   );

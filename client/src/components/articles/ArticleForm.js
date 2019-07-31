@@ -5,7 +5,7 @@ import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 import { addArticle } from '../../actions/articleAction';
 
-const ArticleForm = ({ addArticle }) => {
+const ArticleForm = ({ addArticle, toggle }) => {
   const [formData, setFormData] = useState({ name: '', description: '' });
 
   const onHandleChange = e =>
@@ -14,6 +14,7 @@ const ArticleForm = ({ addArticle }) => {
   const onHandleSubmit = e => {
     e.preventDefault();
     addArticle(formData);
+    toggle();
   };
 
   return (
@@ -48,7 +49,8 @@ const ArticleForm = ({ addArticle }) => {
 };
 
 ArticleForm.propTypes = {
-  addArticle: PropTypes.func.isRequired
+  addArticle: PropTypes.func.isRequired,
+  toggle: PropTypes.func.isRequired
 };
 
 export default connect(

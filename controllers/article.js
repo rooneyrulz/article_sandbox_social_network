@@ -15,7 +15,7 @@ export const getArticles = async (req, res, next) => {
       .exec();
 
     if (articles.length < 1)
-      return res.status(409).send('No Articles Added Yet!');
+      return res.status(409).send('No articles added yet!');
 
     return res.status(200).json(articles);
   } catch (error) {
@@ -38,7 +38,7 @@ export const createArticle = async (req, res, next) => {
   try {
     const user = await User.findById(id).exec();
 
-    if (!user) return res.status(401).send('Unauthorized, User Not Found!');
+    if (!user) return res.status(401).send('Unauthorized, User not found!');
 
     const newArticle = new Article({
       _id: mongoose.Types.ObjectId(),
@@ -65,7 +65,7 @@ export const getArticle = async (req, res, next) => {
   try {
     const article = await Article.findById(id).exec();
 
-    if (!article) return res.status(409).send('No Article Found!');
+    if (!article) return res.status(409).send('No article found!');
 
     return res.status(200).json(article);
   } catch (error) {
@@ -83,7 +83,7 @@ export const deleteArticle = async (req, res, next) => {
   try {
     const article = await Article.findById(id).exec();
 
-    if (!article) return res.status(409).send('No Article Found!');
+    if (!article) return res.status(409).send('No article found!');
 
     if (article.user.toString() !== req.user.id)
       return res.status(401).send('User not authorized!');
@@ -106,7 +106,7 @@ export const likeArticle = async (req, res, next) => {
   try {
     const article = await Article.findById(id).exec();
 
-    if (!article) return res.status(409).send('Article Not Found!');
+    if (!article) return res.status(409).send('Article not found!');
 
     // CHECK THE ARTICLE HAS ALEADY BEEN LIKED
     if (
@@ -135,7 +135,7 @@ export const unlikeArticle = async (req, res, next) => {
   try {
     const article = await Article.findById(id).exec();
 
-    if (!article) return res.status(409).send('Article Not Found!');
+    if (!article) return res.status(409).send('Article not found!');
 
     // CHECK THE ARTICLE HAS ALREADY BEEN LIKED
     if (
@@ -176,7 +176,7 @@ export const commentOnArticle = async (req, res, next) => {
       .select(' -password ')
       .exec();
 
-    if (!user) return res.status(401).send('Unauthorized, No User Found!');
+    if (!user) return res.status(401).send('Unauthorized, No user found!');
 
     const article = await Article.findById(id).exec();
 
@@ -208,7 +208,7 @@ export const deleteComment = async (req, res, next) => {
   try {
     const article = await Article.findById(id).exec();
 
-    if (!article) return res.status(409).send('Article Not Found!');
+    if (!article) return res.status(409).send('Article not found!');
 
     // FIND THE RIGHT COMMENT
     const comment = article.comments.find(cmnt => cmnt.id === commentId);

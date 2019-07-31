@@ -5,7 +5,7 @@ import { Form, FormGroup, Input, Button } from 'reactstrap';
 
 import { addComment } from '../../actions/articleAction';
 
-const CommentForm = ({ articleId, addComment }) => {
+const CommentForm = ({ articleId, addComment, history }) => {
   const [text, setText] = useState({ text: '' });
   
   const onHandleChange = e =>
@@ -15,6 +15,7 @@ const CommentForm = ({ articleId, addComment }) => {
     e.preventDefault();
     console.log(text);
     addComment(text, articleId);
+    history.push('/articles');
   };
 
   return (
@@ -25,7 +26,7 @@ const CommentForm = ({ articleId, addComment }) => {
           name="text"
           id="comment"
           placeholder="Type comment"
-          className="form-control form-control-lg"
+          className="form-control form-control-lg mr-2"
           onChange={e => onHandleChange(e)}
         />
       </FormGroup>

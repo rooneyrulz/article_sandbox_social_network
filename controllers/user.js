@@ -16,7 +16,7 @@ export const getUsers = async (req, res, next) => {
       .select(' -password ')
       .exec();
 
-    if (users.length < 1) return res.status(409).send('No Users Found!');
+    if (users.length < 1) return res.status(409).send('No users found!');
 
     return res.status(200).json({ users });
   } catch (error) {
@@ -41,7 +41,7 @@ export const registerUser = async (req, res, next) => {
   try {
     const isUser = await User.findOne({ email }).exec();
 
-    if (isUser) return res.status(409).send('User Already Exist!');
+    if (isUser) return res.status(409).send('User already exist!');
 
     const hashedPwd = await hash(password, 10);
 
