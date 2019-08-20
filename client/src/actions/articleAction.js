@@ -61,6 +61,7 @@ export const getArticle = id => async dispatch => {
     dispatch({ type: GET_ARTICLE, payload: data });
   } catch (error) {
     // DISPATCH ARTICLE ERROR
+    console.log(error);
     dispatch({
       type: ARTICLE_ERROR,
       payload: {

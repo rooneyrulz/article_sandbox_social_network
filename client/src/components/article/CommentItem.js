@@ -7,21 +7,22 @@ import Moment from 'react-moment';
 import { deleteComment } from '../../actions/articleAction';
 
 const CommentItem = ({
-  comment: { _id, name, text, user, date },
+  comment: { name, text, user, date },
   auth,
+  commentId,
   articleId,
   artLoading,
   deleteComment
 }) => {
-  return artLoading ? (
+  return artLoading || auth.loading ? (
     <h1>Loading</h1>
   ) : (
     <div className="Comment-Item">
-      {!auth.loading && auth.user._id === user && (
+      {auth.user && auth.user._id === user && (
         <Button
           className="Comment-Delete"
           color="danger"
-          onClick={() => deleteComment(articleId, _id)}
+          onClick={() => deleteComment(articleId, commentId)}
         >
           Remove
         </Button>
