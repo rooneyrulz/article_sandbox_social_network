@@ -5,15 +5,19 @@ import { connect } from 'react-redux';
 
 import { getCurrentProfile } from '../../actions/profileAction';
 
-import LoadSpinner from '../layouts/Spinner';
+import Spinner from '../layouts/Spinner';
 
-const Dashboard = ({ auth: { user }, profile: { loading, profile }, getCurrentProfile }) => {
+const Dashboard = ({
+  auth: { user },
+  profile: { loading, profile },
+  getCurrentProfile
+}) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
 
   return loading && profile === null ? (
-    <LoadSpinner />
+    <Spinner />
   ) : (
     <Fragment>
       <div className="Dashboard">
@@ -51,4 +55,7 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
+export default connect(
+  mapStateToProps,
+  { getCurrentProfile }
+)(Dashboard);

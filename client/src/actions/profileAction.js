@@ -114,7 +114,7 @@ export const createProfile = (
   };
 
   try {
-    const { data } = await axios.post('/api/profile', formData, config);
+    const { data } = await axios.post(`${uri}/api/profile`, formData, config);
 
     dispatch({
       type: GET_PROFILE,
@@ -123,7 +123,7 @@ export const createProfile = (
 
     dispatch(
       setAlert(
-        edit ? ('Profile Updated', 200) : ('Profile Created', 201),
+        edit ? 'Profile Updated' : 'Profile Created', 200,
         'success'
       )
     );
@@ -156,7 +156,7 @@ export const addExperience = (formData, history) => async dispatch => {
 
   try {
     const { data } = await axios.put(
-      '/api/profile/experience',
+      `${uri}/api/profile/experience`,
       formData,
       config
     );
@@ -186,7 +186,7 @@ export const addExperience = (formData, history) => async dispatch => {
 // DELETE EXPERIENCES
 export const deleteExperience = id => async dispatch => {
   try {
-    const { data } = await axios.delete(`/api/profile/experience/${id}`);
+    const { data } = await axios.delete(`${uri}/api/profile/experience/${id}`);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -213,7 +213,7 @@ export const addEducation = (formData, history) => async dispatch => {
 
   try {
     const { data } = await axios.put(
-      '/api/profile/education',
+      `${uri}/api/profile/education`,
       formData,
       config
     );
@@ -243,7 +243,7 @@ export const addEducation = (formData, history) => async dispatch => {
 // DELETE EDUCATIONS
 export const deleteEducation = id => async dispatch => {
   try {
-    const { data } = await axios.delete(`/api/profile/education/${id}`);
+    const { data } = await axios.delete(`${uri}/api/profile/education/${id}`);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -263,7 +263,7 @@ export const deleteEducation = id => async dispatch => {
 export const deleteAccount = () => async dispatch => {
   if (window.confirm('Are you sure? This can NOT be undone!')) {
     try {
-      await axios.delete('/api/profile');
+      await axios.delete(`${uri}/api/profile`);
 
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: ACCOUNT_DELETED });

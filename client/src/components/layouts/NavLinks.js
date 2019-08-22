@@ -55,7 +55,7 @@ const NavLinks = ({ isAuthenticated, logoutUser }) => {
 
   return (
     <Fragment>
-      <Fragment>{commonLinks}</Fragment>
+      {commonLinks}
       {isAuthenticated ? authLinks : guestLinks}
     </Fragment>
   );

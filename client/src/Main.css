@@ -103,3 +103,12 @@ body {
   margin: 1rem 1rem 2rem;
   border-radius: 5rem;
 }
+
+
+/* Profile Items*/
+.profile-item {
+  background: rgb(56, 115, 163);
+  border: 1px rgb(23, 45, 63) solid;
+  padding: 1rem;
+  color: #f4f4f4;
+}
