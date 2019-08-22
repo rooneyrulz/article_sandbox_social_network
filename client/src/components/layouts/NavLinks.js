@@ -41,6 +41,11 @@ const NavLinks = ({ isAuthenticated, logoutUser }) => {
   const commonLinks = (
     <Fragment>
       <NavItem>
+        <NavLink exact to="/profiles" className="nav-link">
+          PROFILES
+        </NavLink>
+      </NavItem>
+      <NavItem>
         <NavLink exact to="/articles" className="nav-link">
           ARTICLES
         </NavLink>

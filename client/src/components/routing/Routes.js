@@ -10,6 +10,7 @@ import Dashboard from '../dashboard/Dashboard';
 import Articles from '../articles/Articles';
 import Article from '../article/Article';
 import Alert from '../layouts/Alert';
+import Profiles from '../profiles/Profiles';
 
 // PRIVATE ROUTE
 import PrivateRoute from '../routing/PrivateRoute';
@@ -26,6 +27,7 @@ const Routes = () => (
       <Route exact path="/sign-in" component={Login} />
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <Route exact path="/articles" component={Articles} />
+      <Route exact path="/profiles" component={Profiles} />
       <Route exact path="/article/:id" component={Article} />
     </Switch>
   </Container>

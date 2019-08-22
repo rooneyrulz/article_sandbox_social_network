@@ -1,16 +1,23 @@
 import React, { Fragment, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { getCurrentProfile } from '../../actions/profileAction';
+
 import LoadSpinner from '../layouts/Spinner';
 
-const Dashboard = ({ auth: { user }, profile: { loading, profile } }) => {
+const Dashboard = ({ auth: { user }, profile: { loading, profile }, getCurrentProfile }) => {
+  useEffect(() => {
+    getCurrentProfile();
+  }, [getCurrentProfile]);
+
   return loading && profile === null ? (
     <LoadSpinner />
   ) : (
     <Fragment>
       <div className="Dashboard">
-        <h1 className="display-4 text-primary">Dashboard</h1>
+        <h1 className="display-4 text-info">Dashboard</h1>
         {user && (
           <Fragment>
             <p className="lead">Welcome {user.name}</p>
@@ -23,9 +30,9 @@ const Dashboard = ({ auth: { user }, profile: { loading, profile } }) => {
             <p className="lead">
               It seems you have not setup your profile yet!
             </p>
-            <link to="/create-profile" className="btn btn-lg btn-info">
+            <Link to="/create-profile" className="btn btn-lg btn-info">
               Create Profile
-            </link>
+            </Link>
           </Fragment>
         )}
       </div>
@@ -35,7 +42,8 @@ const Dashboard = ({ auth: { user }, profile: { loading, profile } }) => {
 
 Dashboard.propTypes = {
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -43,4 +51,4 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
