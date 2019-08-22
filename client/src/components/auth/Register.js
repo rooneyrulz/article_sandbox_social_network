@@ -38,7 +38,7 @@ const Register = ({ isAuthenticated, registerUser, history }) => {
   return (
     <Fragment>
       <header className="text-center">
-        <h1 className="display-4">Sign Up</h1>
+        <h1 className="text-primary">Sign Up</h1>
       </header>
       <br />
       <br />
@@ -106,7 +106,7 @@ const Register = ({ isAuthenticated, registerUser, history }) => {
             </FormGroup>
           </Col>
         </Row>
-        <Button color="success" type="submit" className="btn btn-lg">
+        <Button color="primary" type="submit" className="btn btn-lg">
           Sign Up
         </Button>
         <p className="text-center mt-5">

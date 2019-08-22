@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getCurrentProfile } from '../../actions/profileAction';
-
+import DashboardActions from './DashboardActions';
 import Spinner from '../layouts/Spinner';
+
+import { getCurrentProfile } from '../../actions/profileAction';
 
 const Dashboard = ({
   auth: { user },
@@ -21,14 +22,14 @@ const Dashboard = ({
   ) : (
     <Fragment>
       <div className="Dashboard">
-        <h1 className="display-4 text-info">Dashboard</h1>
+        <h1 className="display-4 text-primary">Dashboard</h1>
         {user && (
           <Fragment>
             <p className="lead">Welcome {user.name}</p>
           </Fragment>
         )}
         {profile !== null ? (
-          <h1>My Profile Actions</h1>
+          <DashboardActions />
         ) : (
           <Fragment>
             <p className="lead">

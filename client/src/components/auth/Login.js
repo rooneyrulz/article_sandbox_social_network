@@ -30,7 +30,7 @@ const Login = ({ isAuthenticated, loginUser, history }) => {
   return (
     <Fragment>
       <header className="text-center">
-        <h1 className="display-4">Sign In</h1>
+        <h1 className="text-primary">Sign In</h1>
       </header>
       <br />
       <br />
